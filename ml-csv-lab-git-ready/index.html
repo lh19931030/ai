@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ML CSV Lab</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <aside class="side">
+        <div class="brand">
+          <span>ML</span>
+          <div>
+            <h1>CSV Lab</h1>
+            <p id="datasetMeta">No dataset loaded</p>
+          </div>
+        </div>
+
+        <label class="drop" id="dropZone">
+          <input id="csvFile" type="file" accept=".csv,text/csv" />
+          <strong>Upload CSV</strong>
+          <small>Drop a file or browse</small>
+        </label>
+        <p class="error" id="uploadError"></p>
+
+        <label class="switch">
+          <span>Header row</span>
+          <input id="headerToggle" type="checkbox" disabled />
+        </label>
+
+        <label for="targetSelect">Target Variable</label>
+        <select id="targetSelect" disabled></select>
+
+        <span class="label">Task Type</span>
+        <div class="segments">
+          <button type="button" id="classificationBtn" data-task="classification" disabled>Classification</button>
+          <button type="button" id="regressionBtn" data-task="regression" disabled>Regression</button>
+        </div>
+
+        <label for="modelSelect">Model</label>
+        <select id="modelSelect" disabled></select>
+
+        <div class="actions">
+          <button type="button" id="statsBtn" class="secondary" disabled>Stats</button>
+          <button type="button" id="trainBtn" class="primary" disabled>Train</button>
+        </div>
+      </aside>
+
+      <section class="main">
+        <header class="top">
+          <div>
+            <h2>Data Preview</h2>
+            <p id="statusText">Upload a CSV file to begin.</p>
+          </div>
+          <span id="taskPill">Waiting</span>
+        </header>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>First Five Rows</h3>
+            <span id="shapeText">0 rows / 0 columns</span>
+          </div>
+          <div id="previewTable" class="table-wrap empty">No preview available</div>
+        </section>
+
+        <section class="grid">
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Descriptive Statistics</h3>
+              <span id="statsState">Idle</span>
+            </div>
+            <div id="statsTable" class="table-wrap empty">Run stats after upload</div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Distributions</h3>
+              <span id="distributionState">Idle</span>
+            </div>
+            <div id="distributionGrid" class="dist-grid empty">No distributions yet</div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Model Results</h3>
+            <span id="trainState">Idle</span>
+          </div>
+          <div class="results">
+            <div id="metricsGrid" class="metrics empty">Train a model to see metrics</div>
+            <div id="chartWrap" class="chart empty">No visualization yet</div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
